@@ -1,0 +1,34 @@
+---
+- name: Installing Data Science Tools
+  yum: pkg={{item}} state=installed
+  with_items:
+    - git 
+    - python-devel 
+    - python-virtualenvwrapper 
+    - python-virtualenv 
+    - python-pip 
+    - Cython 
+    - gcc 
+    - gcc-c++ 
+    - numpy 
+    - python-pandas 
+    - scipy 
+    - PyYAML
+#    - python-psycopg2 
+  sudo: yes
+
+- name: Creating Virtual Environment
+  command: /usr/bin/virtualenv --system-site-packages /home/centos/py2-env creates=/home/centos/py2-env
+
+- name: Upgrading PIP
+  command: /home/centos/py2-env/bin/pip install --upgrade pip
+
+- name: Installing Jupyter in venv
+  pip: name=jupyter virtualenv=/home/centos/py2-env state=present
+
+- name: Generating Jupyter config
+  command: /home/centos/py2-env/bin/jupyter notebook --generate-config -y 
+
+- name: Adding Jupyter configuration
+  template: src=jupyter_notebook_config.py.j2 dest=/home/centos/.jupyter/jupyter_notebook_config.py owner=centos group=centos mode=0644
+

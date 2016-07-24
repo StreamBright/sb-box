@@ -1,0 +1,12 @@
+- hosts: local
+  remote_user: centos
+  roles:
+    - role: os
+    - role: sb-box
+  tasks:
+    - name: Updating operating system
+      command: /usr/bin/yum update -y
+      sudo: yes
+#    - name: Restarting operating system for applying changes
+#      command: reboot
+#      sudo: yes
