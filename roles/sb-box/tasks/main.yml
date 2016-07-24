@@ -1,4 +1,8 @@
 ---
+- name: Updating operating system
+  command: /usr/bin/yum update -y
+  sudo: yes
+
 - name: Installing Data Science Tools
   yum: pkg={{item}} state=installed
   with_items:
