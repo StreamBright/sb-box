@@ -1,5 +1,5 @@
 - hosts: local
-  remote_user: centos
+  remote_user: ec2-user
   roles:
     - role: os
     - role: sb-box

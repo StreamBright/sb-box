@@ -18,21 +18,51 @@
     - python-pandas 
     - scipy 
     - PyYAML
+    - graphviz-python 
+    - graphviz
 #    - python-psycopg2 
   sudo: yes
 
 - name: Creating Virtual Environment
-  command: /usr/bin/virtualenv --system-site-packages /home/centos/py2-env creates=/home/centos/py2-env
+  command: /usr/bin/virtualenv --system-site-packages /home/{{unix_user}}/py2-env creates=/home/{{unix_user}}/py2-env
 
 - name: Upgrading PIP
-  command: /home/centos/py2-env/bin/pip install --upgrade pip
+  command: /home/{{unix_user}}/py2-env/bin/pip install --upgrade pip
 
 - name: Installing Jupyter in venv
-  pip: name=jupyter virtualenv=/home/centos/py2-env state=present
+  pip: name={{item}} virtualenv=/home/{{unix_user}}/py2-env state=present
+  with_items:
+    - seaborn
+    - jupyter
+    - sklearn
+    - graphviz
+    - statsmodels
+    - patsy 
 
 - name: Generating Jupyter config
-  command: /home/centos/py2-env/bin/jupyter notebook --generate-config -y 
+  command: /home/{{unix_user}}/py2-env/bin/jupyter notebook --generate-config -y 
 
 - name: Adding Jupyter configuration
-  template: src=jupyter_notebook_config.py.j2 dest=/home/centos/.jupyter/jupyter_notebook_config.py owner=centos group=centos mode=0644
+  template: src=jupyter_notebook_config.py.j2 dest=/home/{{unix_user}}/.jupyter/jupyter_notebook_config.py owner={{unix_user}} group={{unix_user}} mode=0644
+
+- name: Adding Matplotlib dir
+  file: path=/home/{{unix_user}}/.config/matplotlib/ state=directory recurse=yes
+  failed_when: False
+
+- name: Adding Matplotlib config
+  template: src=matplotlibrc.j2 dest=/home/{{unix_user}}/.config/matplotlib/matplotlibrc owner={{unix_user}} group={{unix_user}} mode=0644
+
+- name: Adding starter script
+  template: 
+    src: run.py2.sh.j2 
+    dest: "/home/{{unix_user}}/run.py2.sh" 
+    owner: "{{unix_user}}" 
+    group: "{{unix_user}}" 
+    mode: "0750"
+
+- name: Start Jupyter
+  command: "nohup /home/{{unix_user}}/run.py2.sh"
+  args:
+    executable: "/bin/bash"
+
 

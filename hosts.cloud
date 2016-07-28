@@ -1,0 +1,25 @@
+[local]
+ec2-52-59-80-241.eu-central-1.compute.amazonaws.com #istvan
+ec2-52-59-98-72.eu-central-1.compute.amazonaws.com  #christoph.steiner@avl.com
+ec2-52-59-99-168.eu-central-1.compute.amazonaws.com #edwin@paer.nl
+ec2-52-59-99-82.eu-central-1.compute.amazonaws.com  #l.s.traninger@gmail.com
+ec2-52-59-99-104.eu-central-1.compute.amazonaws.com #quetzy@gmail.com
+ec2-52-59-99-170.eu-central-1.compute.amazonaws.com #michael@artcosmos.com
+ec2-52-59-98-74.eu-central-1.compute.amazonaws.com #salankiv5@gmail.com
+ec2-52-29-192-2.eu-central-1.compute.amazonaws.com #hnfanni@gmail.com
+ec2-52-59-99-120.eu-central-1.compute.amazonaws.com #nperpin@gmail.com
+ec2-52-59-99-140.eu-central-1.compute.amazonaws.com #bruzsa.geza@gmail.com
+ec2-52-59-99-151.eu-central-1.compute.amazonaws.com #reg.kata@gmail.com
+ec2-52-59-99-156.eu-central-1.compute.amazonaws.com #takacs.zsuzsanna.bettina@telekom.hu
+ec2-52-59-95-115.eu-central-1.compute.amazonaws.com #mader.miklos.peter@telekom.hu
+ec2-52-58-225-177.eu-central-1.compute.amazonaws.com #kata.harmati@gmail.com
+ec2-52-59-88-249.eu-central-1.compute.amazonaws.com #anita.goldpergel@gmail.com
+ec2-52-59-88-171.eu-central-1.compute.amazonaws.com #andras.spiegel@fcagroup.com
+ec2-52-59-99-51.eu-central-1.compute.amazonaws.com #antaltamasmail@gmail.com
+ec2-52-59-98-61.eu-central-1.compute.amazonaws.com #berci@statzup.com
+ec2-52-59-96-132.eu-central-1.compute.amazonaws.com #attila.petroczi@realeyesit.com
+ec2-52-28-92-60.eu-central-1.compute.amazonaws.com #stewart.rv@gmail.com
+
+[local:vars]
+unix_user=ec2-user
+

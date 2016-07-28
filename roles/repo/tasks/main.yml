@@ -1,0 +1,5 @@
+---
+
+- name: Cloning repository
+  git: repo=https://github.com/l1x/bootcamp.git dest=/home/{{unix_user}}/bootcamp accept_hostkey=yes
+
